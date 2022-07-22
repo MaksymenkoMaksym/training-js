@@ -69,7 +69,7 @@ function buyBook(book) {
     }
 
     const bookArray = book.split("");
-    let pricePerBook = null;
+    let pricePerBook = 0;
 
     for (const char of bookArray) {
         pricePerBook += 10;
@@ -80,7 +80,7 @@ function buyBook(book) {
 
 
 
-        // orderedBook.push(book);
+        orderedBook.push(book);
         return `Ти купив ${book}. Ти витратив ${pricePerBook}$`;
     }
     return 'Книга продана або в оренді'
@@ -132,6 +132,8 @@ function consoleBook(book) {
 
 
 function desicion() {
+    console.log("bookInLibriry", bookInLibriry);
+    console.log("orderedBook", orderedBook);
     let desicion = confirm("Ви хочете щось зробити з книгою?");
 
     if (desicion) {
