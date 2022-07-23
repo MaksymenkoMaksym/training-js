@@ -93,14 +93,22 @@ function consoleBook(book) {
         return;
     }
 
-    let action = Number(prompt("Щоб взяти книгу оренду - 1, повернути - 2, купити - 3"));
+    let action = prompt("Щоб взяти книгу оренду - 1, повернути - 2, купити - 3");  //  0
 
     if (action === null) {
         return;
     }
+    action = Number(action);
+    console.log(book);
 
     while (action > 3 || action === 0 || action <= -1 || Number.isNaN(action)) {
-        action = Number(prompt("Оренда - 1, повернути - 2, купити - 3"));
+        action = prompt("Виберіть дію: Оренда - 1, повернути - 2, купити - 3");
+
+        if (action === null) {
+            return;
+        }
+
+        action = Number(action);
     }
 
     switch (action) {
@@ -108,27 +116,24 @@ function consoleBook(book) {
             alert(orderBook(book));
             console.log("bookInLibriry", bookInLibriry);
             console.log("orderedBook", orderedBook);
+
+            desicion();
             break;
         case 2:
             alert(returnBook(book));
             console.log("bookInLibriry", bookInLibriry);
             console.log("orderedBook", orderedBook);
+            desicion();
             break;
         case 3:
             alert(buyBook(book));
             console.log("bookInLibriry", bookInLibriry);
             console.log("orderedBook", orderedBook);
-            break;
-
-
-
-        default:
-            console.log('Ви можете купити, взяти в оренду та повернути. Виберіть дію')
+            desicion();
             break;
     }
 
 }
-
 
 
 function desicion() {
@@ -141,7 +146,7 @@ function desicion() {
         let escaped = true;
 
         book = prompt("Ведіть назву книги");
-
+        console.log(book);
         if (book === null) {
             alert("До зустрічі!");
             console.log("До зустрічі!");
