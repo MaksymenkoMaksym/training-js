@@ -11,12 +11,8 @@
 
 function numObj(s) {
     let arr = [];
-    // for (const num of s) {
-    //     arr.push({ [num]: String.fromCharCode(num) });
-    // }
-
     for (const num of s) {
-        arr.push({ [String(num)]: String.fromCharCode(num) });
+        arr.push({ [num]: String.fromCharCode(num) });
     }
 
 
