@@ -16,13 +16,13 @@ const user = {
 // console.log(user)
 
 // Напишіть функцію isEmpty(obj), яка повертає true, якщо об’єкт не має властивості, інакше false
-let obje = {};
-function isEmpty(obj) {
-    if (obj in obje) {
-        return true;
-    }
-    else { return false }
-}
+// let obje = {};
+// function isEmpty(obj) {
+//     if (obj in obje) {
+//         return true;
+//     }
+//     else { return false }
+// }
 // console.log(isEmpty(''))
 
 // У нас є об’єкт для зберігання заробітної плати нашої команди:
@@ -232,16 +232,16 @@ function countLengthObject(obj) { }
 
 // 3 напишіть функцію аналог includes/hasOwnProperty яка отримує об'єкт та масив полів наявність яких потрібно перевірити в об'єкті
 
-function includesProperty(obj, arr) { }
+// function includesProperty(obj, arr) { }
 
 // 4 напишіть фунцію яка отримує об'єкт та тип даних строкою, і перевіряє чи всі ключ-значення в ньому по типу відповідають отриманому типу
 
-function isSameType(obj, type) { }
+// function isSameType(obj, type) { }
 
 // 5 напишіть фунцію, що отримує два об'єкти та порівнює чи в них однакові поля
 // перевірка має бути не глибокою
 
-function comparisonKeys(obj1, obj2) { }
+// function comparisonKeys(obj1, obj2) { }
 
 // 6 напишіть функцію що отримує один об'єкт та перевіряє чи ключі та ключ-значння першого ідентичні у другому 
 const obj1 = {
@@ -261,26 +261,26 @@ const obj2 = {
     car: "Toyota",
 }
 
-function comparisonObject(obj1, obj2) {
-    const obj1Array = Object.keys(obj1);
-    const obj2Array = Object.keys(obj2);
+// function comparisonObject(obj1, obj2) {
+//     const obj1Array = Object.keys(obj1);
+//     const obj2Array = Object.keys(obj2);
 
-    const obj1ArrayV = Object.values(obj1);
-    const obj2ArrayV = Object.values(obj2);
+//     const obj1ArrayV = Object.values(obj1);
+//     const obj2ArrayV = Object.values(obj2);
 
-    for (const el of obj1Array) {
+//     for (const el of obj1Array) {
 
-        if (!obj2Array.includes(el)) {
-            return false
-        }
-        for (const el of obj1ArrayV) {
-            if (!obj2ArrayV.includes(el)) {
-                return false
-            }
-        }
-    }
-    return true
-}
+//         if (!obj2Array.includes(el)) {
+//             return false
+//         }
+//         for (const el of obj1ArrayV) {
+//             if (!obj2ArrayV.includes(el)) {
+//                 return false
+//             }
+//         }
+//     }
+//     return true
+// }
 
 function comparisonObject(obj1, obj2) {
     const obj1Array = Object.keys(obj1);
@@ -351,22 +351,131 @@ function greet(language) {
 greet('wels')
 
 
-shuffleIt([1, 2, 3, 4, 5], [1, 2]) //should return [1, 3, 2, 4, 5]
 
+// Доповни функцію getFriends(users) таким чином, щоб вона повертала масив друзів всіх користувачів(властивість friends).
+// У декількох користувачів можуть бути однакові друзі, зроби так, щоб масив, що повертається, не містив повторень.
 
-function shuffleIt(arr, ...arrays) {
+const getFriends = function (users) {
+    let result = [];
+    let result1 = []
+    for (const user of users) {
 
-    for (const v of arrays) {
-        let [x, y] = v; //[3,5]
-
-        let x1 = arr[x]; // 5
-        let y1 = arr[y];//81
-
-        arr[x] = y1; //
-        arr[y] = x1; //
+        result.push([...user.friends]);
     }
 
+    let resultFlat = result.flatMap(v => v);
+
+    resultFlat.map((v, i, arr) => {
+        if (!result1.includes(v))
+            result1.push(v)
+    }
+
+    )
+
+    return result1
 }
 
-let array = [1, 2, 81, 5, 67, 5, 5];
-let arrays = [[1, 2], [3, 5]]
+// console.log(getFriends(users))
+
+const getFriends1 = function (users) {
+    let result = [];
+    //['Sharron Pace', 'Briana Decker', 'Sharron Pace', 'Marilyn Mcintosh','Goldie Gentry', 'Aisha Tran','Jordan Sampson', 'Eddie Strong','Jacklyn Lucas', 'Linda Chapman', 'Goldie Gentry', 'Briana Decker']
+    //   0                1                 2                 3
+
+
+    users.forEach((user, index, array) => { result.push(...user.friends) });
+
+    result.forEach((v) => {
+        if (!result1.includes(v))
+            result1.push(v)
+    })
+
+
+    //                                      2                 0
+    return result.filter((v, i, arr) => i === arr.indexOf(v))
+}
+
+// console.log(getFriends1(users))
+
+
+
+let users = [
+    {
+        name: "Moore Hensley",
+        email: "moorehensley@indexia.com",
+        eyeColor: "blue",
+        friends: ["Sharron Pace"],
+        isActive: false,
+        balance: 2811,
+        gender: "male",
+        age: 37
+    },
+    {
+        name: "Sharlene Bush",
+        email: "sharlenebush@tubesys.com",
+        eyeColor: "blue",
+        friends: ["Briana Decker", "Sharron Pace"],
+        isActive: true,
+        balance: 3821,
+        gender: "female",
+        age: 34
+    },
+    {
+        name: "Ross Vazquez",
+        email: "rossvazquez@xinware.com",
+        eyeColor: "green",
+        friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+        isActive: false,
+        balance: 3793,
+        gender: "male",
+        age: 24
+    },
+    {
+        name: "Elma Head",
+        email: "elmahead@omatom.com",
+        eyeColor: "green",
+        friends: ["Goldie Gentry", "Aisha Tran"],
+        isActive: true,
+        balance: 2278,
+        gender: "female",
+        age: 21
+    },
+    {
+        name: "Carey Barr",
+        email: "careybarr@nurali.com",
+        eyeColor: "blue",
+        friends: ["Jordan Sampson", "Eddie Strong"],
+        isActive: true,
+        balance: 3951,
+        gender: "male",
+        age: 27
+    },
+    {
+        name: "Blackburn Dotson",
+        email: "blackburndotson@furnigeer.com",
+        eyeColor: "brown",
+        friends: ["Jacklyn Lucas", "Linda Chapman"],
+        isActive: false,
+        balance: 1498,
+        gender: "male",
+        age: 38
+    },
+    {
+        name: "Sheree Anthony",
+        email: "shereeanthony@kog.com",
+        eyeColor: "brown",
+        friends: ["Goldie Gentry", "Briana Decker"],
+        isActive: true,
+        balance: 2764,
+        gender: "female",
+        age: 39
+    }
+]
+
+
+const getTotalBalanceByGender = (users, gender) => {
+    return users.filter(el => el.gender === gender)
+        .reduce((total, el) => { return total + el.balance }, 0)
+};
+
+console.log(getTotalBalanceByGender(users, 'female'))
