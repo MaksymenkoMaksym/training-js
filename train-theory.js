@@ -478,4 +478,26 @@ const getTotalBalanceByGender = (users, gender) => {
         .reduce((total, el) => { return total + el.balance }, 0)
 };
 
-console.log(getTotalBalanceByGender(users, 'female'))
+// console.log(getTotalBalanceByGender(users, 'female'))
+
+
+// function pigIt(str) {
+//     const regex = /^\W$/;
+//     let result = [];
+//     let arrStr = str.split(" ");
+//     for (const item of arrStr) {
+//         if (!regex.test(item)) {
+//             let withoutFirst = item.slice(1, item.length) + item[0] + "ay";
+//             result.push(withoutFirst);
+//         }
+
+//         else { result.push(item) }
+
+//     }
+
+//     console.log(result.join(" "))
+// }
+
+
+pigIt('P latin is cool');
+pigIt('Hello world !'); 
